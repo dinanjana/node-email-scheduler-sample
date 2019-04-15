@@ -1,0 +1,28 @@
+{
+  "name": "email-scheduler",
+  "version": "1.0.0",
+  "description": "schedules and delivers email using sendgrid",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dinanjana/node-email-scheduler-sample.git"
+  },
+  "author": "dinanjana",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dinanjana/node-email-scheduler-sample/issues"
+  },
+  "homepage": "https://github.com/dinanjana/node-email-scheduler-sample#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "lodash": "^4.17.11",
+    "moment-timezone": "^0.5.23",
+    "mongodb": "^3.2.3",
+    "uuid": "^3.3.2"
+  }
+}
