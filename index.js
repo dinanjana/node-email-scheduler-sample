@@ -2,13 +2,18 @@
  * Created by dinanjanag on 4/13/19.
  */
 const _ = require('lodash');
+const util = require('util');
 const express = require('express');
 const BodyParser = require("body-parser");
+const { run } = require('./service/schedulerService');
 const { init } = require('./repository/db');
 const { handlers } = require('./api/index');
-const { METHODS } = require('./Constants');
+const { DELAY, METHODS } = require('./Constants');
+
 const app = express();
 const port = 2010;
+
+const setIntervalPromise = util.promisify(setInterval);
 
 app.use(BodyParser.json());
 app.use(BodyParser.urlencoded({ extended: true }));
@@ -37,6 +42,8 @@ const registerHandlers = () => {
 app.get('/', (req, res) => res.send('Hello World!'));
 
 registerHandlers();
+
+setIntervalPromise(run, DELAY);
 
 app.listen(port, () => {
   init();

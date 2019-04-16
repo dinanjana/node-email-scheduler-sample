@@ -1,7 +1,7 @@
 /**
  * Created by dinanjanag on 4/15/19.
  */
-const { SENT_COL, QUEUE_COL, FAILED_COL, SYDNEY_TZ } = require('../Constants');
+const { SENT_COL, QUEUE_COL, FAILED_COL, EMAIL_STATUS, SYDNEY_TZ } = require('../Constants');
 const { insertEmail, getEmail, deleteEmail } = require('../repository/db');
 const { sendMail } = require('../repository/email');
 const ObjectId = require("mongodb").ObjectID;
@@ -33,7 +33,7 @@ const sendEmail = async (email) => {
 };
 
 const getEmailForId = (id) => {
-  return getEmail(id);
+  return getEmail(id, EMAIL_STATUS);
 };
 
 const deleteQueuedEmail = (id) => {
@@ -44,4 +44,5 @@ module.exports = {
   sendEmail,
   getEmailForId,
   deleteQueuedEmail,
+  shouldEmailBeSent,
 };

@@ -14,7 +14,7 @@ const METHODS = {
   DELETE: 'DELETE',
 };
 const FROM = 'test@test.com';
-
+const DELAY = 1000 * 60;
 module.exports = {
   DB_URL,
   DATABASE,
@@ -25,4 +25,5 @@ module.exports = {
   SYDNEY_TZ,
   METHODS,
   FROM,
+  DELAY,
 };

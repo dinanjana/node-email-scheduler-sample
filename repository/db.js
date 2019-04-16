@@ -49,9 +49,9 @@ const insertStatus = (id, status, retries = 0) => {
   });
 };
 
-const getEmail = (id, retries = 0) => {
+const getEmail = (id, col, retries = 0) => {
   return new Promise((resolve, reject) => {
-    db.collection[EMAIL_STATUS].findOne({'_id': new ObjectId(id)}, (err, res) => {
+    db.collection[col].findOne({'_id': new ObjectId(id)}, (err, res) => {
       if (err) {
         if (retries < 5) {
           return getEmail(email, ++retries);
@@ -96,6 +96,15 @@ const deleteEmail = (id, col) => {
   })
 };
 
+const updateStatus = (id, status) => {
+  return db.collection[EMAIL_STATUS]
+  .updateOne({'_id': new ObjectId(id)}, {$set: { status, }})
+  .then(data => data)
+  .catch(err => {
+    console.error(`Error occurred while updating email [${id}] with [${status}]`, err);
+  });
+};
+
 
 module.exports = {
   init,
@@ -103,4 +112,5 @@ module.exports = {
   getEmail,
   getAllEmails,
   deleteEmail,
+  updateStatus,
 };
