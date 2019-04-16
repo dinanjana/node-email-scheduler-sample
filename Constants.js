@@ -8,13 +8,18 @@ const SENT_COL = 'sent';
 const FAILED_COL = 'failed';
 const EMAIL_STATUS = 'status';
 const SYDNEY_TZ = 'Australia/Sydney';
+const EMAIL_STATE = {
+  QUEUE_COL,
+  SENT_COL,
+  FAILED_COL,
+};
 const METHODS = {
   GET: 'GET',
   POST: 'POST',
   DELETE: 'DELETE',
 };
 const FROM = 'test@test.com';
-const DELAY = 1000 * 60;
+const DELAY = 1000 * 60 * 60;
 module.exports = {
   DB_URL,
   DATABASE,
@@ -26,4 +31,5 @@ module.exports = {
   METHODS,
   FROM,
   DELAY,
+  EMAIL_STATE,
 };
